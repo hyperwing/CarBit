@@ -1,17 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { RouterExtensions } from "nativescript-angular/router";
-import { getDefaultFrame } from "nativescript-angular/platform-providers";
-import { NavigationEnd, Router } from "@angular/router";
-import {AppComponent} from "../app.component";
+import { Router } from '@angular/router';
 
 @Component({
-    selector: "Home",
+    selector: "Drive",
     moduleId: module.id,
-    templateUrl: "./home.component.html"
+    templateUrl: "./drive.component.html"
 })
-export class HomeComponent implements OnInit {
+export class DriveComponent implements OnInit {
 
     constructor() {
         // Use the component constructor to inject providers.
@@ -26,8 +23,4 @@ export class HomeComponent implements OnInit {
         sideDrawer.showDrawer();
     }
 
-    onStartButtonTap(): void {
-        alert("you're driving now.");
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-    }
 }

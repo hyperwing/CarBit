@@ -6,6 +6,11 @@
 }
 // Common page class
 .page-content {
+
+    .home_page_content{
+        //background-color: black;
+        //background-image: url(../App_Resources/photos/home_bg.jpg);
+    }
     .page-placeholder {
         color: $page-icon-color;
         font-size: $page-content-placeholder-font-size;
@@ -13,12 +18,17 @@
         horizontal-align: center;
     }
 
-    .page-icon {
-        font-size: 72;
-        vertical-align: top;
-        horizontal-align: center;
-        color: $page-icon-color;
-        margin-top: 20%;
+    .buttona{
+        background-color: $ab-background;
+        border-radius: 10;
+        border-color: grey;
+        font-size: 70;
+        color:white;
+        width: 80%;
+        height: 20%;
+    }
+    .buttona:active{
+        background-color:gray;
     }
 }
 
