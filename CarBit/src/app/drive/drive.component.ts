@@ -3,6 +3,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { Router } from '@angular/router';
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
+import { FuelEfficiency } from "../helper/fuel-efficiency";
 
 @Component({
     selector: "Drive",
@@ -14,7 +15,9 @@ export class DriveComponent implements OnInit {
     speed: number;
     latitude: number;
     longitude: number;
-
+    optimalSpeed: number;
+    efficiency :number;
+    fuelEfficiency: FuelEfficiency;
         
     getLocationData() : Promise<any> {
         return new Promise((resolve, reject) => {
@@ -31,6 +34,12 @@ export class DriveComponent implements OnInit {
             this.speed = result.speed;
             this.longitude= result.longitude;
             this.latitude = result.latitude;
+
+            var range = 5;
+    
+            this.efficiency = this.fuelEfficiency.getFuelEfficiency(this.speed);
+            this.optimalSpeed = this.fuelEfficiency.getMostEfficientSpeed(this.speed-range, this.speed+range);
+        
             console.log("updateLocationspeed: "+result.speed);
         }, error => {
             console.error(error);
@@ -42,6 +51,7 @@ export class DriveComponent implements OnInit {
     }
 
     constructor() {
+        this.fuelEfficiency = new FuelEfficiency();
         var id = setInterval(() => this.updateLocation(), 1000);
     }
 
