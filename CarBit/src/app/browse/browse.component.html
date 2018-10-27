@@ -19,3 +19,13 @@
     <Label class="page-icon fa" text="&#xf1ea;"></Label>
     <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
 </GridLayout>
+
+
+
+<StackLayout>
+        <button type="button" text="enable Location" (tap)="enableLocationTap()"></button>
+        <Label class="page-content" text="speed: {{speed}}" ></Label>
+        <Label class="page-content" text="lat: {{latitude}}" ></Label>
+        <Label class="page-content" text="long: {{longitude}}" ></Label>
+
+</StackLayout>

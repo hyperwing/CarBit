@@ -17,7 +17,7 @@ export class FeaturedComponent implements OnInit {
     getSpeed() : number {
         return Math.floor(Math.random() * 91);
     }
-
+        
     updatePage() : void {
         this.efficiency = this.fuelEfficiency.getFuelEfficiency(this.getSpeed());
     }

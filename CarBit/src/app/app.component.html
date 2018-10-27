@@ -10,7 +10,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             <Label class="sidedrawer-header-brand" text="User Name"></Label>
             <Label class="footnote" text="username@mail.com"></Label>
         </StackLayout>
-    
+
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
@@ -45,3 +45,4 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 
     <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
 </RadSideDrawer>
+
