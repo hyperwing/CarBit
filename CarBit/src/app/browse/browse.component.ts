@@ -59,7 +59,7 @@ export class BrowseComponent implements OnInit {
             this.speed = result.speed;
             this.longitude= result.longitude;
             this.latitude = result.latitude;
-            console.log(result.speed);
+            console.log("updateLocationspeed: "+result.speed);
         }, error => {
             console.error(error);
         });
