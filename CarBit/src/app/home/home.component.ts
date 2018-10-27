@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     }
 
     onStartButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
+        alert("you're driving now.");
     }
 }
