@@ -8,7 +8,17 @@ import { DriveRoutingModule } from "./drive-routing.module";
 import labelModule = require("tns-core-modules/ui/label");
 import { DriveModule } from "./drive.module";
 import { GestureTypes, GestureEventData } from "tns-core-modules/ui/gestures";
-
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "tns-core-modules/application-settings";
 
 
 @Component({
@@ -57,21 +67,16 @@ export class DriveComponent implements OnInit {
     
             this.efficiency = this.fuelEfficiency.getFuelEfficiency(this.speed);
             this.optimalSpeed = Math.round(this.fuelEfficiency.getMostEfficientSpeed(this.speed-range, this.speed+range));
-        
-            if(this.units == "mph"){
-                this.optimalSpeed = Math.round(this.optimalSpeed*2.23693);
-            } else {
-                this.optimalSpeed = Math.round(this.optimalSpeed*3.6);
-            }
 
-            console.log("updateLocationspeed: "+result.speed);
         }, error => {
             console.error(error);
         });
     }  
 
-    updatePage() : void {
-        console.log("update speed :"+this.speed);
+    updateParkingLocation() {
+        setNumber("parkingLocationX", this.latitude);
+        setNumber("parkingLocationY", this.longitude);
+
     }
 
     constructor() {

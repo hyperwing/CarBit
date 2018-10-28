@@ -15,6 +15,8 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content home_page_content">
-    <button [nsRouterLink]="['/drive']" class="buttona" text="START DRIVING" ></button>
-</GridLayout>
+<StackLayout orientation="vertical" class="page page-content home_page_content">
+    <button [nsRouterLink]="['/drive']" class="buttona" text="START DRIVING" textWrap="true"></button>
+    <Label class="action-bar-title" text="{{parkingString}}" (tap) = "openParkingLink()"></Label>
+
+</StackLayout>
