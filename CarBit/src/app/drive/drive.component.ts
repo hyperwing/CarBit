@@ -4,6 +4,12 @@ import * as app from "tns-core-modules/application";
 import { Router } from '@angular/router';
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { FuelEfficiency } from "../helper/fuel-efficiency";
+import { DriveRoutingModule } from "./drive-routing.module";
+import labelModule = require("tns-core-modules/ui/label");
+import { DriveModule } from "./drive.module";
+import { GestureTypes, GestureEventData } from "tns-core-modules/ui/gestures";
+
+
 
 @Component({
     selector: "Drive",
@@ -62,6 +68,13 @@ export class DriveComponent implements OnInit {
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    onSpeedLabelTap() : void{
+        var label = new labelModule.Label();
+        label.on(GestureTypes.tap, function (args: GestureEventData) {
+            console.log("Tap");
+        });
     }
 
 }
