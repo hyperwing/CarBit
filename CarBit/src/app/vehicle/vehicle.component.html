@@ -12,26 +12,27 @@
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
         ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Settings"></Label>
+    <Label class="action-bar-title" text="Add Vehicle"></Label>
 </ActionBar>
 
 <StackLayout style="padding: 5; font-size: 18;" class="page page-content">
-    <Label style="font-size: 30; padding: 10 0"class="settings_head" text="Your Profile Information"></Label>
+
+    <Label style="font-size: 30; padding: 10 0"class="settings_head" text="Add a Car"></Label>
+
+    <Label class="settings" text="Model Year"></Label>
+    <TextField [(ngModel)]="year" class="input" hint="e.g. 1776"></TextField>
     
-    <Label class="settings" text="Full Name"></Label>
-    <TextField [(ngModel)]="name" class="input" hint="e.g. Joe Smith"></TextField>
+    <Label class="settings" text="Vehicle Make"></Label>
+    <TextField [(ngModel)]="make" class="input" hint="e.g. Honda"></TextField>
 
-    <Label class="settings" text="Email Address"></Label>
-    <TextField [(ngModel)]="email" class="input" hint="e.g. joesmith@carbit.com"></TextField>
+    <Label class="settings" text="Vehicle Model"></Label>
+    <TextField [(ngModel)]="model" class="input" hint="e.g. Horse-drawn Carriage"></TextField>
 
-    <Label class="settings" text="Birthday"></Label>
-    <TextField [(ngModel)]="birthday" class="input" hint="e.g. 11/11/1977"></TextField>
-
-    <Label class="settings" text="Gender"></Label>
-    <TextField [(ngModel)]="gender" class="input" hint="e.g. male, female, other"></TextField>
+    <Label class="settings" text="Vehicle Milage"></Label>
+    <TextField [(ngModel)]="milage" class="input" hint="e.g. 123456"></TextField>
 
     <StackLayout class="hr-light"></StackLayout>
 
-    <button text="Save" (tap)="onSaveButtonTap()"></button>
+    <button text="Add Car" (tap)="onAddCarTap()"></button>
 
 </StackLayout>

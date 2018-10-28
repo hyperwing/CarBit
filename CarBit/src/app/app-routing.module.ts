@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: "search", loadChildren: "~/app/search/search.module#SearchModule" },
     { path: "bluetooth", loadChildren: "~/app/bluetooth/bluetooth.module#BluetoothModule" },
     { path: "featured", loadChildren: "~/app/featured/featured.module#FeaturedModule" },
+    { path: "vehicle", loadChildren: "~/app/vehicle/vehicle.module#VehicleModule" },
     { path: "settings", loadChildren: "~/app/settings/settings.module#SettingsModule" }
 ];
 
