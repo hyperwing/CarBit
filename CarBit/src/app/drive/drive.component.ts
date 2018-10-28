@@ -35,6 +35,13 @@ export class DriveComponent implements OnInit {
     efficiency :number;
     fuelEfficiency: FuelEfficiency;
     units: string ="mph";
+    acceleration: number;
+    //variables to calculate acceleration
+    timeStamp: number;
+    speedInit: number;
+    speedFinal: number;
+    timeInit: number;
+    timeFinal: number;
         
     getLocationData() : Promise<any> {
         return new Promise((resolve, reject) => {
@@ -56,6 +63,7 @@ export class DriveComponent implements OnInit {
 
             this.longitude= result.longitude;
             this.latitude = result.latitude;
+            this.timeStamp = result.timestamp;
 
             var range = 5;
     
@@ -94,6 +102,33 @@ export class DriveComponent implements OnInit {
             this.units = "mph";
         }        
         console.log("change units");
+    }
+
+    // getSpeedData () {
+    //     return this.speed;
+    // }
+
+    public updateAcceleration() : number {
+       
+        //update speed final
+        this.speedFinal = this.speed;
+        this.timeFinal = this.timeStamp;
+        
+        //calculate acceleration
+        if (this.timeInit == null || this.speedInit == null) {
+            this.speedInit = 0;
+            this.timeInit = 0;
+            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+        } else {
+            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+        }
+
+        //update speed initial
+        this.speedInit = this.speed;
+        this.timeInit = this.timeStamp;
+
+
+        return this.acceleration;
     }
 
 }
