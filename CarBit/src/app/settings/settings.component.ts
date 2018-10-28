@@ -8,13 +8,13 @@ import * as app from "tns-core-modules/application";
     templateUrl: "./settings.component.html"
 })
 export class SettingsComponent implements OnInit {
-
+    make: string;
     constructor() {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
+        this.make="a";
     }
 
     onDrawerButtonTap(): void {
@@ -23,6 +23,6 @@ export class SettingsComponent implements OnInit {
     }
 
     onSaveButtonTap(): void {
-        
+        alert(this.make);
     }
 }
