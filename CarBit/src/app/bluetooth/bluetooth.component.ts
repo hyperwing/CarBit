@@ -34,7 +34,6 @@ export class BluetoothComponent implements OnInit {
     }
 
     scanForBluetooth(){
-        alert('scanning');
         this.availableBluetoothDevices = new ObservableArray<BluetoothObject>();
         Bluetooth.startScanning({
             serviceUUIDs: [],
@@ -62,11 +61,17 @@ export class BluetoothComponent implements OnInit {
         var bluetoothObject = new BluetoothObject(peripheral.UUID, peripheral.name);
         if(peripheral.name != undefined){
             this.availableBluetoothDevices.push(bluetoothObject);
+            this.connectedText = "";
         }
     }
 
-    onItemTap(args: EventData){
-        alert('Item selected');
+    onItemTap(args){
+        var bluetoothObject = this.availableBluetoothDevices.getItem(args.index);
+        alert({
+            title: "UUID",
+            message: bluetoothObject.uuid,
+            okButtonText: "Ok"
+        });
     }
 
     onDrawerButtonTap(): void {
