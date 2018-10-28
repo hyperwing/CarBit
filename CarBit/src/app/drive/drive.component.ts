@@ -128,7 +128,7 @@ export class DriveComponent implements OnInit {
         //calculate acceleration
         if (this.timeInit == null || this.speedInit == null) {
             this.speedInit = 0;
-            this.timeInit = 0;
+            this.timeInit = this.timeStamp;
             this.distanceTally=0;
             this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))/3600);
             this.distanceTally = this.distanceTally+((this.speedFinal - this.speedInit) * ((this.timeFinal - this.timeInit)/3600));
