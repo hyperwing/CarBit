@@ -49,7 +49,7 @@ export class MyCarsComponent implements OnInit {
     onItemTap(args){
         var car = this.cars.getItem(args.index);
 
-        dialogs.action("Make active car?", "Cancel", ["Yes", "Delete"]).then(result=>{
+        dialogs.action("Make active car?", "Cancel", ["Yes", "Remove Bluetooth", "Delete"]).then(result=>{
             if(result == "Yes"){
                 setNumber("ActiveCarIndex", args.index+1);
                 console.log("active car index: " + (args.index+1));
@@ -85,6 +85,13 @@ export class MyCarsComponent implements OnInit {
                 setNumber("NumberOfCars", carsTotal);
 
                 this.removeFromCars(args.index);
+            }else if(result == "Remove Bluetooth"){
+                var math = args.index+1
+                var bluetoothName = "BluetoothName" + math;
+                var bluetoothUUID = "BluetoothUUID" + math;
+                this.cars.getItem(args.index).bluetoothName = "";
+                remove(bluetoothName);
+                remove(bluetoothUUID);
             }
         });
     }
