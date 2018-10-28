@@ -18,11 +18,11 @@
 <StackLayout>
     <Label style="font-size: 22; text-align: center;padding-top:25px" text="Your Speed"></Label>
     <Label class="speedo" id="speedLabel" text="{{speed}} {{units}}" (tap)="onSpeedLabelTap()" ></Label>
-    <Label style="padding:40px; font-size: 30; text-align: center" class="drive_page_content" text="Optimal Speed: {{optimalSpeed}} {{units}}" ></Label>
-    <Label style="padding:40px; font-size: 30; text-align: center" class="drive_page_content" text="Acceleration: {{acceleration}} {{units}}^2" ></Label>
-    <Label style="padding:40px; font-size: 30; text-align: center" class="drive_page_content" text="Distance Traveled: {{distanceTally}} {{distanceUnits}}" ></Label>
-    <Label style="padding:40px; text-align: center" class="drive_page_content" text="Latitude: {{latitude}}" ></Label>
-    <Label style="padding:40px;text-align: center" class="drive_page_content" text="Longitude: {{longitude}}" ></Label>
-    <Label style="padding:40px;text-align: center" class="drive_page_content" text="Active Car: {{ActiveCar}}" ></Label>
+    <Label style="padding:40px; font-size: 25; text-align: center" class="drive_page_content" text="Optimal Speed: {{optimalSpeed}} {{units}}" ></Label>
+    <Label style="padding:40px; font-size: 25; text-align: center" class="drive_page_content" text="Acceleration: {{acceleration}} {{units}}^2" ></Label>
+    <Label style="padding:40px; font-size: 25; text-align: center" class="drive_page_content" text="Distance Traveled: {{distanceTally}} {{distanceUnits}}" ></Label>
+    <Label style="padding:40px; font-size: 25; text-align: center" class="drive_page_content" text="Latitude: {{latitude}}" ></Label>
+    <Label style="padding:40px; font-size: 25; text-align: center" class="drive_page_content" text="Longitude: {{longitude}}" ></Label>
+    <Label style="padding:40px;font-size: 25;text-align: center" class="drive_page_content" text="Active Car: {{ActiveCar}}" ></Label>
     <button style="padding:25px; height:220px; font-size: 45" [nsRouterLink]="['/home']" text="end drive" (tap)="updateParkingLocation()"></button>
 <StackLayout>
