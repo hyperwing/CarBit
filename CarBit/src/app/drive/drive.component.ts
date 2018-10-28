@@ -24,6 +24,7 @@ export class DriveComponent implements OnInit {
     optimalSpeed: number;
     efficiency :number;
     fuelEfficiency: FuelEfficiency;
+    units: string ="mph";
         
     getLocationData() : Promise<any> {
         return new Promise((resolve, reject) => {
@@ -37,7 +38,12 @@ export class DriveComponent implements OnInit {
          
     public updateLocation() {
         this.getLocationData().then(result => {
-            this.speed = Math.round(result.speed);
+            if(this.units == "mph"){
+                this.speed = Math.round(result.speed*2.23693);
+            } else {
+                this.speed = Math.round(result.speed*3.6);
+            }
+
             this.longitude= result.longitude;
             this.latitude = result.latitude;
 
@@ -46,6 +52,12 @@ export class DriveComponent implements OnInit {
             this.efficiency = this.fuelEfficiency.getFuelEfficiency(this.speed);
             this.optimalSpeed = Math.round(this.fuelEfficiency.getMostEfficientSpeed(this.speed-range, this.speed+range));
         
+            if(this.units == "mph"){
+                this.optimalSpeed = Math.round(this.optimalSpeed*2.23693);
+            } else {
+                this.optimalSpeed = Math.round(this.optimalSpeed*3.6);
+            }
+
             console.log("updateLocationspeed: "+result.speed);
         }, error => {
             console.error(error);
@@ -71,10 +83,12 @@ export class DriveComponent implements OnInit {
     }
 
     onSpeedLabelTap() : void{
-        var label = new labelModule.Label();
-        label.on(GestureTypes.tap, function (args: GestureEventData) {
-            console.log("Tap");
-        });
+        if(this.units == "m/s"){
+            this.units= "mph";
+        } else {
+            this.units = "km/h";
+        }        
+        console.log("change units");
     }
 
 }
