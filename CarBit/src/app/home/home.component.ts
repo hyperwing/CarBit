@@ -26,8 +26,4 @@ export class HomeComponent implements OnInit {
         sideDrawer.showDrawer();
     }
 
-    onStartButtonTap(): void {
-        alert("you're driving now.");
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-    }
 }

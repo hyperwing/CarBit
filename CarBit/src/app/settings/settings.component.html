@@ -15,7 +15,20 @@
     <Label class="action-bar-title" text="Settings"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf013;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+<StackLayout style="padding: 5; font-size: 18;" class="page page-content">
+    <Label style="font-size: 30; padding: 10 0"class="settings_head" text="Input Your Profile Information"></Label>
+    
+    <Label class="settings" text="Model Year"></Label>
+    <TextField class="input" hint="e.g. 1776"></TextField>
+    
+    <Label class="settings" text="Vehicle Make"></Label>
+    <TextField class="input" hint="e.g. Honda"></TextField>
+
+    <Label class="settings" text="Vehicle Model"></Label>
+    <TextField class="input" hint="e.g. Horse-drawn Carriage"></TextField>
+
+    <Label class="settings" text="Vehicle Milage"></Label>
+    <TextField class="input" hint="e.g. 123456"></TextField>
+
+    <button text="Save" (tap)="onSaveButtonTap()"></button>
+</StackLayout>
