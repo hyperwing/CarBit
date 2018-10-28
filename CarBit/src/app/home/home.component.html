@@ -19,5 +19,5 @@
     <button [nsRouterLink]="['/drive']" class="buttona" text="START DRIVING" textWrap="true"></button>
     <button class="buttonFindCar" text="Click Here to Find Car" textWrap="true" (tap)="openParkingLink()"></button>
     <Label style="text-align: center" class="drive_page_content" text="{{parkingString}}" (tap) = "openParkingLink()"></Label>
-
+    <button (tap)="scan()" text="Bluetooth Search"></button>
 </StackLayout>

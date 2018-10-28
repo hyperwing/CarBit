@@ -1,11 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { RouterExtensions } from "nativescript-angular/router";
-import { getDefaultFrame } from "nativescript-angular/platform-providers";
-import { NavigationEnd, Router } from "@angular/router";
-import {AppComponent} from "../app.component";
 var utilityModule = require("utils/utils");
+import * as Bluetooth from "nativescript-bluetooth";
 
 import {
     getBoolean,
@@ -19,6 +16,8 @@ import {
     clear
 } from "tns-core-modules/application-settings";
 import { stringify } from "@angular/core/src/render3/util";
+import { NavigationEnd } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
     selector: "Home",
@@ -28,8 +27,9 @@ import { stringify } from "@angular/core/src/render3/util";
 export class HomeComponent implements OnInit {
     parkingString :string;
     parkingMapsLink :string;
+    arr: Array<string>;
 
-    constructor() {
+    constructor(private routerExtensions: RouterExtensions) {
 
         if(hasKey("parkingLocationX")){
             var parkingLocationX = parseFloat(getNumber("parkingLocationX").toFixed(3));
@@ -54,7 +54,50 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
-        // Init your component properties here.
+        this.arr = [];
+        for(let i = 1; i <= getNumber("NumberOfCars"); i++){
+            var uuid = getString("BluetoothUUID" + i);
+            if(uuid != undefined && uuid != "" && uuid != null){
+                this.arr.push(uuid);
+            }
+        }
+        Bluetooth.requestCoarseLocationPermission();
+        this.scan();
+    }
+
+    scan(){
+        Bluetooth.startScanning({
+            serviceUUIDs: [],
+            seconds: 4,
+            skipPermissionCheck: true,
+            onDiscovered: (peripheral) => this.startDrive(peripheral)
+            }).then(function() {
+                // console.log("scanning complete");
+            }, function (err) {
+                // console.log("error while scanning: " + err);
+            });
+    }
+
+    startDrive(peripheral){
+        if(peripheral != undefined){
+            if(this.contains(peripheral.UUID)){
+                this.routerExtensions.navigate(['drive'], {
+                    transition: {
+                        name: "fade"
+                    }
+                });
+            }
+        }
+    }
+
+    contains(UUID): boolean{
+        var contains = false;
+
+        for(let i = 0; i < this.arr.length && !contains; i++){
+            contains = this.arr[i] == UUID;
+        }
+
+        return contains;
     }
 
     onDrawerButtonTap(): void {
