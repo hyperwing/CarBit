@@ -83,10 +83,10 @@ export class DriveComponent implements OnInit {
     }
 
     onSpeedLabelTap() : void{
-        if(this.units == "m/s"){
-            this.units= "mph";
+        if(this.units == "mph"){
+            this.units= "km/h";
         } else {
-            this.units = "km/h";
+            this.units = "mph";
         }        
         console.log("change units");
     }
