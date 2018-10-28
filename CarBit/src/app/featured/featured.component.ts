@@ -31,6 +31,14 @@ export class FeaturedComponent implements OnInit {
     ngOnInit(): void {
     }
     
+    // onFuelButtonTap():void {
+    //     var data;
+    //     var zip;
+    //     $.load("https://www.gasbuddy.com/home?search="+zip+"&fuel=1", function(response) {
+          
+    //     });
+    // }
+
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
