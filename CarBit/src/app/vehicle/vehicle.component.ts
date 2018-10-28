@@ -49,6 +49,7 @@ export class VehicleComponent implements OnInit {
         setString("Model" + index, this.model);
         setString("Year" + index, this.year);
         setString("Mileage" + index, this.mileage);
+        setNumber("NumberOfCars", index);
 
         alert({
             title:"Saved",
