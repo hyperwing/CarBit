@@ -5,6 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { getDefaultFrame } from "nativescript-angular/platform-providers";
 import { NavigationEnd, Router } from "@angular/router";
 import {AppComponent} from "../app.component";
+var utilityModule = require("utils/utils");
 
 import {
     getBoolean,
@@ -47,6 +48,10 @@ export class HomeComponent implements OnInit {
         // Use the component constructor to inject providers.
     }
 
+
+    openParkingLink(){
+        utilityModule.openUrl(this.parkingMapsLink);
+    }
 
 
     ngOnInit(): void {

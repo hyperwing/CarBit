@@ -17,6 +17,6 @@
 
 <GridLayout class="page page-content home_page_content">
     <button [nsRouterLink]="['/drive']" class="buttona" text="START DRIVING" ></button>
-    <Label class="action-bar-title" text="{{parkingString}}"></Label>
+    <Label class="action-bar-title" text="{{parkingString}}" (tap) = "openParkingLink()"></Label>
 
 </GridLayout>
