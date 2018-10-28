@@ -25,6 +25,9 @@ export class AppComponent implements OnInit {
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
+    username: string;
+    email:string
+
     constructor(private router: Router, private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject services.
     }
@@ -37,7 +40,8 @@ export class AppComponent implements OnInit {
         .pipe(filter((event: any) => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
 
-        setNumber("numberOfCars", 0);
+        this.email = getString("Email");
+        this.username = getString("Name");
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {
@@ -55,7 +59,8 @@ export class AppComponent implements OnInit {
                 name: "fade"
             }
         });
-
+        this.email = getString("Email");
+        this.username = getString("Name");
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }

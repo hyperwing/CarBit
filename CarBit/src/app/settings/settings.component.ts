@@ -31,8 +31,8 @@ export class SettingsComponent implements OnInit {
     ngOnInit(): void {
         this.gender = getString("Gender");
         this.birthday = getString("Birthday");
-        this.email = getString("AccountEmail");
-        this.name = getString("Name:");
+        this.email = getString("Email");
+        this.name = getString("Name");
     }
 
     onDrawerButtonTap(): void {
@@ -43,8 +43,8 @@ export class SettingsComponent implements OnInit {
     onSaveButtonTap(args): void {
         setString("Gender", this.gender);
         setString("Birthday", this.birthday);
-        setString("AccountEmail", this.email);
-        setString("Name:", this.name);
+        setString("Email", this.email);
+        setString("Name", this.name);
 
         alert({
             title:"Saved",
