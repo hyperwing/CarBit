@@ -24,6 +24,8 @@ export class SettingsComponent implements OnInit {
     gender: string;
     email: string;
     name: string;
+
+    feedbackText:string;
     constructor() {
         // Use the component constructor to inject providers.
     }
@@ -50,6 +52,13 @@ export class SettingsComponent implements OnInit {
             title:"Saved",
             message: "Your information has been updated.",
             okButtonText: "Ok"
+        })
+    }
+    onFeedbackSubmit(){
+        alert({
+            title:"Submitted",
+            message:"feedback submitted! Thanks!",
+            okButtonText: "done"
         })
     }
 }

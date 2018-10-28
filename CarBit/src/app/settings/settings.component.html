@@ -34,4 +34,9 @@
 
     <button text="Save" (tap)="onSaveButtonTap()"></button>
 
+
+    <Label style="font-size: 20; padding: 10 0"class="settings_head" text="Please submit any feedback!"></Label>
+
+    <TextField [(ngModel)]="feedbackText" class="input"></TextField>
+    <button text="Submit" (tap)="onFeedbackSubmit()"></button>
 </StackLayout>
