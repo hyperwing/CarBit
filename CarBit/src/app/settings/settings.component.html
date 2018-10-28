@@ -21,7 +21,7 @@
     <Label class="settings" text="Model Year" [(ngModel)]="year"></Label>
     <TextField class="input" hint="e.g. 1776"></TextField>
     
-    <Label class="settings" text="Vehicle Make {{make}}" [(ngModel)]="make"></Label>
+    <Label class="settings" text="Vehicle Make {{make}}" [(ngModel)]="make" name="make"></Label>
     <TextField class="input" hint="e.g. Honda"></TextField>
 
     <Label class="settings" text="Vehicle Model" [(ngModel)]="model"></Label>
@@ -29,6 +29,7 @@
 
     <Label class="settings" text="Vehicle Milage" [(ngModel)]="milage"></Label>
     <TextField class="input" hint="e.g. 123456"></TextField>
+
 
     <button text="Save" (tap)="onSaveButtonTap()"></button>
 </StackLayout>
