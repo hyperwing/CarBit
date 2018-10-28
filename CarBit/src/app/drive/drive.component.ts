@@ -35,8 +35,8 @@ export class DriveComponent implements OnInit {
     efficiency :number;
     fuelEfficiency: FuelEfficiency;
     units: string ="mph";
+     //variables to calculate acceleration
     acceleration: number;
-    //variables to calculate acceleration
     timeStamp: number;
     speedInit: number;
     speedFinal: number;
