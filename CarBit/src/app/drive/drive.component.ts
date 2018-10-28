@@ -31,14 +31,14 @@ export class DriveComponent implements OnInit {
          
     public updateLocation() {
         this.getLocationData().then(result => {
-            this.speed = result.speed;
+            this.speed = Math.round(result.speed);
             this.longitude= result.longitude;
             this.latitude = result.latitude;
 
             var range = 5;
     
             this.efficiency = this.fuelEfficiency.getFuelEfficiency(this.speed);
-            this.optimalSpeed = this.fuelEfficiency.getMostEfficientSpeed(this.speed-range, this.speed+range);
+            this.optimalSpeed = Math.round(this.fuelEfficiency.getMostEfficientSpeed(this.speed-range, this.speed+range));
         
             console.log("updateLocationspeed: "+result.speed);
         }, error => {
