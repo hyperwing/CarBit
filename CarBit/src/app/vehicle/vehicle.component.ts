@@ -41,8 +41,8 @@ export class VehicleComponent implements OnInit {
 
     onAddCarTap(): void {
         let index = 1;
-        if(hasKey("numberOfCars")){
-            index = getNumber("numberOfCars");
+        if(hasKey("NumberOfCars")){
+            index = getNumber("NumberOfCars");
             index++;
         }
         setString("Make" + index, this.make);
