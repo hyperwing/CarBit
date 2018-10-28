@@ -18,16 +18,16 @@
 <StackLayout style="padding: 5; font-size: 18;" class="page page-content">
     <Label style="font-size: 30; padding: 10 0"class="settings_head" text="Input Your Profile Information"></Label>
     
-    <Label class="settings" text="Model Year"></Label>
+    <Label class="settings" text="Model Year" [(ngModel)]="year"></Label>
     <TextField class="input" hint="e.g. 1776"></TextField>
     
-    <Label class="settings" text="Vehicle Make"></Label>
+    <Label class="settings" text="Vehicle Make {{make}}" [(ngModel)]="make"></Label>
     <TextField class="input" hint="e.g. Honda"></TextField>
 
-    <Label class="settings" text="Vehicle Model"></Label>
+    <Label class="settings" text="Vehicle Model" [(ngModel)]="model"></Label>
     <TextField class="input" hint="e.g. Horse-drawn Carriage"></TextField>
 
-    <Label class="settings" text="Vehicle Milage"></Label>
+    <Label class="settings" text="Vehicle Milage" [(ngModel)]="milage"></Label>
     <TextField class="input" hint="e.g. 123456"></TextField>
 
     <button text="Save" (tap)="onSaveButtonTap()"></button>
