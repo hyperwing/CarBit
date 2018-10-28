@@ -84,6 +84,7 @@ export class DriveComponent implements OnInit {
     constructor() {
         this.fuelEfficiency = new FuelEfficiency();
         var id = setInterval(() => this.updateLocation(), 1000);
+        var id1 = setInterval(() => this.updateAcceleration(), 1000);
     }
 
     ngOnInit(): void {

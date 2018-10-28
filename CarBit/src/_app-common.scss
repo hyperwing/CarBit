@@ -31,11 +31,12 @@
     }
 
     .buttona{
-        background-color: $ab-background;
+        background-color: lightgreen;
         border-radius: 10;
         border-color: grey;
         font-size: 70;
         color:white;
+        margin-bottom:100px;
         width: 80%;
         height: 40%;
     }
@@ -44,12 +45,12 @@
     }
 
     .buttonFindCar{
-        background-color: $ab-background;
+        background-color: darkslategray;
+        color:white;
         border-radius: 10;
         border-color: grey;
         font-size: 25;
-        color:white; 
-        width: 30%;
+        width: 40%;
         height: 15%;
     }
 }

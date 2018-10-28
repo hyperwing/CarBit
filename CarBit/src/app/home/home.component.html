@@ -15,9 +15,9 @@
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
 
-<StackLayout orientation="vertical" class="page page-content home_page_content">
+<StackLayout orientation="vertical" style="vertical-align:center;" class="page page-content home_page_content">
     <button [nsRouterLink]="['/drive']" class="buttona" text="START DRIVING" textWrap="true"></button>
-    <Label class="drive_page_content" text="{{parkingString}}" (tap) = "openParkingLink()"></Label>
-    <button class="buttonFindCar" text="click to find car" textWrap="true" (tap)="openParkingLink()"></button>
+    <button class="buttonFindCar" text="Click Here to Find Car" textWrap="true" (tap)="openParkingLink()"></button>
+    <Label style="text-align: center" class="drive_page_content" text="{{parkingString}}" (tap) = "openParkingLink()"></Label>
 
 </StackLayout>
