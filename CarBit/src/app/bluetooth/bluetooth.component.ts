@@ -45,15 +45,6 @@ export class BluetoothComponent implements OnInit {
             this.scanForBluetooth();
         }
 
-        setNumber("numberOfCars", 3 );
-        setString("Make1", "mclaren");
-        setString("Model1", "p1");
-        setString("Make2", "acura");
-        setString("Model2", "mdx");
-        setString("Make3", "honda");
-        setString("Model3", "accord");
-
-
     }
 
     scanForBluetooth(){
@@ -96,7 +87,7 @@ export class BluetoothComponent implements OnInit {
         //     okButtonText: "Ok"
         // });
 
-        let numberOfCars = getNumber("numberOfCars");
+        let numberOfCars = getNumber("NumberOfCars");
         let cars = [];
         for(let i=1; i<=numberOfCars; i++){
             cars.push(getString("Make"+i)+ " " + getString("Model"+i));
