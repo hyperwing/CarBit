@@ -27,7 +27,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 export class HomeComponent implements OnInit {
     parkingString :string;
     parkingMapsLink :string;
-    arr: Array<string>;
+    gasBuddyLink:string= "https://www.gasbuddy.com/home?search=43201&fuel=1";
+    arr: any;
 
     constructor(private routerExtensions: RouterExtensions) {
 
@@ -35,9 +36,8 @@ export class HomeComponent implements OnInit {
             var parkingLocationX = parseFloat(getNumber("parkingLocationX").toFixed(3));
             var parkingLocationY = parseFloat(getNumber("parkingLocationY").toFixed(3));
 
+            this.parkingMapsLink  = "https://www.google.com/maps/search/"+parkingLocationX+","+parkingLocationY;            
 
-            this.parkingMapsLink  = "https://www.google.com/maps/search/"+parkingLocationX+","+parkingLocationY;
-            
             this.parkingString = "Last parked at "+ parkingLocationX +", " + parkingLocationY;
             console.log(this.parkingMapsLink);
         } else{
@@ -52,13 +52,17 @@ export class HomeComponent implements OnInit {
         utilityModule.openUrl(this.parkingMapsLink);
     }
 
+    openGasBuddyLink(){
+        utilityModule.openUrl(this.gasBuddyLink);
+    }
+
 
     ngOnInit(): void {
         this.arr = [];
         for(let i = 1; i <= getNumber("NumberOfCars"); i++){
             var uuid = getString("BluetoothUUID" + i);
             if(uuid != undefined && uuid != "" && uuid != null){
-                this.arr.push(uuid);
+                this.arr.push({uuid, i});
             }
         }
     }
@@ -80,6 +84,12 @@ export class HomeComponent implements OnInit {
     startDrive(peripheral){
         if(peripheral != undefined){
             if(this.contains(peripheral.UUID)){
+                for(let i=0; i<this.arr.length;i++){
+                    if(this.arr[i].uuid == peripheral.UUID){
+                        setNumber("ActiveCarIndex", i);
+                    }
+                }
+                ;
                 this.routerExtensions.navigate(['drive'], {
                     transition: {
                         name: "fade"
@@ -93,7 +103,7 @@ export class HomeComponent implements OnInit {
         var contains = false;
 
         for(let i = 0; i < this.arr.length && !contains; i++){
-            contains = this.arr[i] == UUID;
+            contains = this.arr[i].uuid == UUID;
         }
 
         return contains;
