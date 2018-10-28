@@ -119,9 +119,9 @@ export class DriveComponent implements OnInit {
         if (this.timeInit == null || this.speedInit == null) {
             this.speedInit = 0;
             this.timeInit = 0;
-            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))*3600);
         } else {
-            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))*3600);
         }
 
         //update speed initial
