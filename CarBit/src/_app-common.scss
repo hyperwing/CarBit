@@ -14,6 +14,12 @@
         horizontal-align: center;
     }
 
+    .drive_page_content{
+        font-size: $page-content-placeholder-font-size;
+        color: $text-color;
+        vertical-align: center;
+    }
+
     .buttona{
         background-color: $ab-background;
         border-radius: 10;
