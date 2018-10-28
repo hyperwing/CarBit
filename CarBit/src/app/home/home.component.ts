@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
             var parkingLocationY = parseFloat(getNumber("parkingLocationY").toFixed(3));
 
 
-            //TODO open in a web browser upon clicking
             this.parkingMapsLink  = "https://www.google.com/maps/search/"+parkingLocationX+","+parkingLocationY;
             
             this.parkingString = "Last parked at "+ parkingLocationX +", " + parkingLocationY;

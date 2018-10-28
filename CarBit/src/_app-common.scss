@@ -42,6 +42,16 @@
     .buttona:active{
         background-color:gray;
     }
+
+    .buttonFindCar{
+        background-color: $ab-background;
+        border-radius: 10;
+        border-color: grey;
+        font-size: 25;
+        color:white; 
+        width: 30%;
+        height: 15%;
+    }
 }
 
 //Action bar
