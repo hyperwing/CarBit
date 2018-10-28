@@ -60,5 +60,7 @@ export class SettingsComponent implements OnInit {
             message:"feedback submitted! Thanks!",
             okButtonText: "done"
         })
+
+        setString("feedbackText", this.feedbackText);
     }
 }
