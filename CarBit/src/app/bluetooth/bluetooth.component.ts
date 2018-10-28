@@ -81,11 +81,6 @@ export class BluetoothComponent implements OnInit {
 
     onItemTap(args){
         var bluetoothObject = this.availableBluetoothDevices.getItem(args.index);
-        // alert({
-        //     title: "UUID",
-        //     message: bluetoothObject.uuid,
-        //     okButtonText: "Ok"
-        // });
 
         let numberOfCars = getNumber("NumberOfCars");
         let cars = [];
@@ -97,7 +92,7 @@ export class BluetoothComponent implements OnInit {
         dialogs.action("Choose car to associate to", "Cancel button text", cars).then(result => {
             console.log("Dialog result: " + result);
             for(let i=1; i<=numberOfCars; i++){
-                if(result == cars[i]){
+                if(result == cars[i-1]){
                     alert({
                         title:result,
                         message: bluetoothObject.uuid,

@@ -10,6 +10,7 @@ const routes: Routes = [
     { path: "bluetooth", loadChildren: "~/app/bluetooth/bluetooth.module#BluetoothModule" },
     { path: "featured", loadChildren: "~/app/featured/featured.module#FeaturedModule" },
     { path: "vehicle", loadChildren: "~/app/vehicle/vehicle.module#VehicleModule" },
+    { path: "mycars", loadChildren: "~/app/mycars/mycars.module#MyCarsModule" },
     { path: "settings", loadChildren: "~/app/settings/settings.module#SettingsModule" }
 ];
 

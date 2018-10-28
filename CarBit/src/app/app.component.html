@@ -33,6 +33,11 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                     <Label col="1" text="Bluetooth" class="p-r-10"></Label>
                 </GridLayout>
 
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/mycars')" (tap)="onNavItemTap('/mycars')">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="My Cars" class="p-r-10"></Label>
+                </GridLayout>
+
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/vehicle')" (tap)="onNavItemTap('/vehicle')">
                     <Label col="0" text="&#xf013;" class="fa"></Label>
                     <Label col="1" text="Vehicle" class="p-r-10"></Label>
