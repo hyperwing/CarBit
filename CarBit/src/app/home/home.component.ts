@@ -6,16 +6,48 @@ import { getDefaultFrame } from "nativescript-angular/platform-providers";
 import { NavigationEnd, Router } from "@angular/router";
 import {AppComponent} from "../app.component";
 
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "tns-core-modules/application-settings";
+import { stringify } from "@angular/core/src/render3/util";
+
 @Component({
     selector: "Home",
     moduleId: module.id,
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
+    parkingString :string;
+    parkingMapsLink :string;
 
     constructor() {
+
+        if(hasKey("parkingLocationX")){
+            var parkingLocationX = parseFloat(getNumber("parkingLocationX").toFixed(3));
+            var parkingLocationY = parseFloat(getNumber("parkingLocationY").toFixed(3));
+
+
+            //TODO open in a web browser upon clicking
+            this.parkingMapsLink  = "https://www.google.com/maps/search/"+parkingLocationX+","+parkingLocationY;
+            
+            this.parkingString = "Last parked at "+ parkingLocationX +", " + parkingLocationY;
+            console.log(this.parkingMapsLink);
+        } else{
+            this.parkingString = "No Parking data stored";
+        }
+
         // Use the component constructor to inject providers.
     }
+
+
 
     ngOnInit(): void {
         // Init your component properties here.
