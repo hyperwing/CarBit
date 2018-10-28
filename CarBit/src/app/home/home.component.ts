@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
             if(this.contains(peripheral.UUID)){
                 for(let i=0; i<this.arr.length;i++){
                     if(this.arr[i].uuid == peripheral.UUID){
-                        setNumber("ActiveCarIndex", i);
+                        setNumber("ActiveCarIndex", i+1);
                     }
                 }
                 ;
