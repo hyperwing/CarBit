@@ -35,7 +35,9 @@ export class DriveComponent implements OnInit {
     efficiency :number;
     fuelEfficiency: FuelEfficiency;
     units: string ="mph";
-     //variables to calculate acceleration
+    distanceTally: number = 0;
+    distanceUnits;
+     //variables to calculate acceleration and distanceTally
     acceleration: number;
     timeStamp: number;
     speedInit: number;
@@ -99,8 +101,10 @@ export class DriveComponent implements OnInit {
     onSpeedLabelTap() : void{
         if(this.units == "mph"){
             this.units= "km/h";
+            this.distanceUnits="km";
         } else {
             this.units = "mph";
+            this.distanceUnits="miles";
         }        
         console.log("change units");
     }
@@ -119,9 +123,11 @@ export class DriveComponent implements OnInit {
         if (this.timeInit == null || this.speedInit == null) {
             this.speedInit = 0;
             this.timeInit = 0;
-            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))*3600);
+            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))/3600);
+            this.distanceTally = this.distanceTally+((this.speedFinal - this.speedInit) * ((this.timeFinal - this.timeInit)/3600));
         } else {
-            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))*3600);
+            this.acceleration = ((this.speedFinal - this.speedInit) / ((this.timeFinal - this.timeInit))/3600);
+            this.distanceTally = this.distanceTally+((this.speedFinal - this.speedInit) * ((this.timeFinal - this.timeInit)/3600));
         }
 
         //update speed initial
