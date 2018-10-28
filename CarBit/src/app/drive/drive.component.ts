@@ -25,6 +25,12 @@ export class DriveComponent implements OnInit {
     efficiency :number;
     fuelEfficiency: FuelEfficiency;
     units: string ="mph";
+    acceleration: number;
+    //variables to calculate acceleration
+    speedInit: number;
+    speedFinal: number;
+    timeInit: number;
+    timeFinal: number;
         
     getLocationData() : Promise<any> {
         return new Promise((resolve, reject) => {
@@ -90,5 +96,15 @@ export class DriveComponent implements OnInit {
         }        
         console.log("change units");
     }
+
+    // getSpeedData () {
+    //     return this.speed;
+    // }
+
+    // public updateAcceleration() {
+    //     this.speedInit = this.getSpeedData();
+        
+        
+    // }
 
 }
