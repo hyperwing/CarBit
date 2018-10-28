@@ -7,6 +7,17 @@ import { BluetoothObject } from "./bluetoothObject";
 import { EventData, booleanConverter, getViewById } from "tns-core-modules/ui/page/page";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "tns-core-modules/application-settings";
 
 @Component({
     selector: "Bluetooth",
@@ -14,9 +25,6 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
     templateUrl: "./bluetooth.component.html"
 })
 export class BluetoothComponent implements OnInit {
-
-    bluetoothName: string;
-    bluetoothUUID: string;
 
     connectedText: string;
     availableBluetoothDevices: ObservableArray<BluetoothObject>;
@@ -36,6 +44,7 @@ export class BluetoothComponent implements OnInit {
             this.connectedText = "Connected - Searching for devices";
             this.scanForBluetooth();
         }
+
     }
 
     scanForBluetooth(){
@@ -46,9 +55,9 @@ export class BluetoothComponent implements OnInit {
             skipPermissionCheck: true,
             onDiscovered: (peripheral) => this.addBluetoothDevice(peripheral)
             }).then(function() {
-                console.log("scanning complete");
+                // console.log("scanning complete");
             }, function (err) {
-                console.log("error while scanning: " + err);
+                // console.log("error while scanning: " + err);
             }).then(function(){
                 if(this.availableBluetoothDevices.length <= 0){
                     this.connectedText = "No devices found"
@@ -78,21 +87,28 @@ export class BluetoothComponent implements OnInit {
         //     okButtonText: "Ok"
         // });
 
-        dialogs.action("Choose car to associate to", "Cancel button text", ["Option1", "Option2"]).then(result => {
+        let numberOfCars = getNumber("NumberOfCars");
+        let cars = [];
+        for(let i=1; i<=numberOfCars; i++){
+            cars.push(getString("Make"+i)+ " " + getString("Model"+i));
+            console.log(cars);
+        }
+
+        dialogs.action("Choose car to associate to", "Cancel button text", cars).then(result => {
             console.log("Dialog result: " + result);
-            if(result == "Option1"){
-                alert({
-                    title:"option 1",
-                    message: bluetoothObject.uuid,
-                    okButtonText: "done"
-                })
-            }else if(result == "Option2"){
-                alert({
-                    title:"option 2",
-                    message: bluetoothObject.uuid,
-                    okButtonText: "done"
-                })
+            for(let i=1; i<=numberOfCars; i++){
+                if(result == cars[i]){
+                    alert({
+                        title:result,
+                        message: bluetoothObject.uuid,
+                        okButtonText: "done"
+                    })
+                    setString("BluetoothName"+i, bluetoothObject.name );
+                    setString("BluetoothUUID"+i, bluetoothObject.uuid );
+                }
             }
+
+            
         });
 
     }

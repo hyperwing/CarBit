@@ -3,6 +3,7 @@
 // Font icon class
 .fa {
     font-family: "FontAwesome";
+    
 }
 // Common page class
 .page-content {
@@ -13,7 +14,16 @@
         vertical-align: center;
         horizontal-align: center;
     }
-
+    .speedo{
+        width:80%;
+        font-family: "Arkitech Bold";
+        text-align: center;
+        border-radius: 5;
+        padding:25px; 
+        font-size:50;
+        background-color:black;
+        color:white;
+    }
     .drive_page_content{
         font-size: $page-content-placeholder-font-size;
         color: $text-color;

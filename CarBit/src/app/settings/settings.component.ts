@@ -20,17 +20,21 @@ import {
     templateUrl: "./settings.component.html"
 })
 export class SettingsComponent implements OnInit {
-    make: string;
-    year: number;
-    model: string;
+    birthday: string;
+    gender: string;
     email: string;
     name: string;
+
+    feedbackText:string;
     constructor() {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        this.make="a";
+        this.gender = getString("Gender");
+        this.birthday = getString("Birthday");
+        this.email = getString("Email");
+        this.name = getString("Name");
     }
 
     onDrawerButtonTap(): void {
@@ -39,19 +43,24 @@ export class SettingsComponent implements OnInit {
     }
 
     onSaveButtonTap(args): void {
+        setString("Gender", this.gender);
+        setString("Birthday", this.birthday);
+        setString("Email", this.email);
+        setString("Name", this.name);
 
-        if(hasKey("numberOfCars")){
+        alert({
+            title:"Saved",
+            message: "Your information has been updated.",
+            okButtonText: "Ok"
+        })
+    }
+    onFeedbackSubmit(){
+        alert({
+            title:"Submitted",
+            message:"feedback submitted! Thanks!",
+            okButtonText: "done"
+        })
 
-            let index = getNumber("numberOfCars");
-            setNumber("ModelDate"+index, this.year);
-            setString("ModelYear"+index, this.make);
-            setString("ModelYear"+index, this.model);
-            setString("AccountEmail", this.email);
-            setString("Name:", this.name);
-
-        }
-
-
-        alert(this.make);
+        setString("feedbackText", this.feedbackText);
     }
 }
