@@ -18,8 +18,8 @@
 <StackLayout>
     <Label text="Welcome to your car!!!!!!!!!"></Label>
     <button [nsRouterLink]="['/home']" class="buttona" text="end drive" ></button>
-    <Label class="drive_page_content" id="speedLabel" text="speed: {{speed}} m/s" ></Label>
-    <Label class="drive_page_content" text="lat: {{latitude}}" ></Label>
-    <Label class="drive_page_content" text="long: {{longitude}}" ></Label>
-    <Label class="drive_page_content" text="optimal speed: {{optimalSpeed}} m/s" ></Label>
+    <Label class="drive_page_content" id="speedLabel" text="speed: {{speed}} {{units}}" (tap)="onSpeedLabelTap()" ></Label>
+    <Label class="drive_page_content" text="latitude: {{latitude}}" ></Label>
+    <Label class="drive_page_content" text="longitude: {{longitude}}" ></Label>
+    <Label class="drive_page_content" text="optimal speed: {{optimalSpeed}} {{units}}" ></Label>
 <StackLayout>
