@@ -61,11 +61,10 @@ export class HomeComponent implements OnInit {
                 this.arr.push(uuid);
             }
         }
-        Bluetooth.requestCoarseLocationPermission();
-        this.scan();
     }
 
     scan(){
+        Bluetooth.requestCoarseLocationPermission();
         Bluetooth.startScanning({
             serviceUUIDs: [],
             seconds: 4,
