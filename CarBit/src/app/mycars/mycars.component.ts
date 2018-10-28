@@ -15,6 +15,7 @@ import {
     clear
 } from "tns-core-modules/application-settings";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { GestureEventData } from "tns-core-modules/ui/gestures";
 
 @Component({
     selector: "MyCars",
@@ -48,8 +49,11 @@ export class MyCarsComponent implements OnInit {
     onItemTap(args){
         var car = this.cars.getItem(args.index);
 
-        dialogs.action("Remove this car?", "No", ["Yes"]).then(result=>{
+        dialogs.action("Make active car?", "Cancel", ["Yes", "Delete"]).then(result=>{
             if(result == "Yes"){
+                setNumber("ActiveCarIndex", args.index+1);
+                console.log("active car index: " + (args.index+1));
+            }else if(result == "Delete"){
                 let carsTotal = getNumber("NumberOfCars");
 
                 for(var i = args.index+1; i < carsTotal; i++){

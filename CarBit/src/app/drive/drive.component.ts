@@ -42,6 +42,7 @@ export class DriveComponent implements OnInit {
     speedFinal: number;
     timeInit: number;
     timeFinal: number;
+    ActiveCar : string;
         
     getLocationData() : Promise<any> {
         return new Promise((resolve, reject) => {
@@ -85,6 +86,13 @@ export class DriveComponent implements OnInit {
         this.fuelEfficiency = new FuelEfficiency();
         var id = setInterval(() => this.updateLocation(), 1000);
         var id1 = setInterval(() => this.updateAcceleration(), 1000);
+
+        let activeCarIndex = getNumber("ActiveCarIndex");
+        for(let i=1; i<=activeCarIndex; i++){
+            let make = getString("Make"+i);
+            let model =  getString("Model"+i);
+            this.ActiveCar = make+ " " + model; 
+        }
     }
 
     ngOnInit(): void {
