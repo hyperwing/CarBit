@@ -37,6 +37,7 @@ export class DriveComponent implements OnInit {
     units: string ="mph";
     acceleration: number;
     //variables to calculate acceleration
+    timeStamp: number;
     speedInit: number;
     speedFinal: number;
     timeInit: number;
@@ -62,6 +63,7 @@ export class DriveComponent implements OnInit {
 
             this.longitude= result.longitude;
             this.latitude = result.latitude;
+            this.timeStamp = result.timestamp;
 
             var range = 5;
     
@@ -106,10 +108,27 @@ export class DriveComponent implements OnInit {
     //     return this.speed;
     // }
 
-    // public updateAcceleration() {
-    //     this.speedInit = this.getSpeedData();
+    public updateAcceleration() : number {
+       
+        //update speed final
+        this.speedFinal = this.speed;
+        this.timeFinal = this.timeStamp;
         
-        
-    // }
+        //calculate acceleration
+        if (this.timeInit == null || this.speedInit == null) {
+            this.speedInit = 0;
+            this.timeInit = 0;
+            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+        } else {
+            this.acceleration = ((this.speedFinal - this.speedInit) / (this.timeFinal - this.timeInit));
+        }
+
+        //update speed initial
+        this.speedInit = this.speed;
+        this.timeInit = this.timeStamp;
+
+
+        return this.acceleration;
+    }
 
 }
