@@ -20,9 +20,8 @@ import {
     templateUrl: "./settings.component.html"
 })
 export class SettingsComponent implements OnInit {
-    make: string;
-    year: number;
-    model: string;
+    birthday: string;
+    gender: string;
     email: string;
     name: string;
     constructor() {
@@ -30,7 +29,10 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.make="a";
+        this.gender = getString("Gender");
+        this.birthday = getString("Birthday");
+        this.email = getString("AccountEmail");
+        this.name = getString("Name:");
     }
 
     onDrawerButtonTap(): void {
@@ -39,19 +41,15 @@ export class SettingsComponent implements OnInit {
     }
 
     onSaveButtonTap(args): void {
+        setString("Gender", this.gender);
+        setString("Birthday", this.birthday);
+        setString("AccountEmail", this.email);
+        setString("Name:", this.name);
 
-        if(hasKey("numberOfCars")){
-
-            let index = getNumber("numberOfCars");
-            setNumber("ModelDate"+index, this.year);
-            setString("ModelYear"+index, this.make);
-            setString("ModelYear"+index, this.model);
-            setString("AccountEmail", this.email);
-            setString("Name:", this.name);
-
-        }
-
-
-        alert(this.make);
+        alert({
+            title:"Saved",
+            message: "Your information has been updated.",
+            okButtonText: "Ok"
+        })
     }
 }

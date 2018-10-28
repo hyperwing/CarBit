@@ -1,6 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "tns-core-modules/application-settings";
 
 @Component({
     selector: "Vehicle",
@@ -9,12 +20,18 @@ import * as app from "tns-core-modules/application";
 })
 export class VehicleComponent implements OnInit {
     make: string;
+    model: string;
+    year: string;
+    mileage: string;
     constructor() {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        this.make="a";
+        this.make = "";
+        this.model = "";
+        this.year = "";
+        this.mileage = "";
     }
 
     onDrawerButtonTap(): void {
@@ -22,7 +39,26 @@ export class VehicleComponent implements OnInit {
         sideDrawer.showDrawer();
     }
 
-    onSaveButtonTap(): void {
-        alert(this.make);
+    onAddCarTap(): void {
+        let index = 1;
+        if(hasKey("NumberOfCars")){
+            index = getNumber("NumberOfCars");
+            index++;
+        }
+        setString("Make" + index, this.make);
+        setString("Model" + index, this.model);
+        setString("Year" + index, this.year);
+        setString("Mileage" + index, this.mileage);
+
+        alert({
+            title:"Saved",
+            message: "Your car has been added.",
+            okButtonText: "Ok"
+        })
+
+        this.make = "";
+        this.model = "";
+        this.year = "";
+        this.mileage = "";
     }
 }
